@@ -9,12 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Hero extends Actor
 {
     GreenfootSound elephantSound = new GreenfootSound("elephantcub.mp3");
-    GreenfootImage[] idle = new GreenfootImage[3];
+    GreenfootImage[] idle = new GreenfootImage[6];
     SimpleTimer animationTimer = new SimpleTimer();
     public Hero()
     {
         setImage(idle[0]);
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 6; i++)
         {
             idle[i] = new GreenfootImage("images/hero_walk/idle" + i + ".png");
         }
