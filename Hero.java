@@ -8,29 +8,47 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Hero extends Actor
 {
-    /**
-     * Act - do whatever the Hero wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
+    GreenfootSound elephantSound = new GreenfootSound("elephantcub.mp3");
+    GreenfootImage[] idle = new GreenfootImage[3];
+    SimpleTimer animationTimer = new SimpleTimer();
     public Hero()
     {
-        GreenfootImage idle = new GreenfootImage("images/hero_idle/idle0.png");
-        int newWidth = 150;  
-        int newHeight = 150;
-        idle.scale(newWidth, newHeight);
-        setImage(idle);
-        
-        
-        
+        setImage(idle[0]);
+        for(int i = 0; i < 3; i++)
+        {
+            idle[i] = new GreenfootImage("images/hero_walk/idle" + i + ".png");
+        }
+        setImage(idle[0]);
+    }
+
+
+   // GreenfootSound elephantSound = new GreenfootSound("elephantcub.mp3");
+    //GreenfootImage idle = new GreenfootImage("images/hero_walk/idle0.png");
+    int imageIndex = 0;
+    public void animateHero()
+    {
+        if(animationTimer.millisElapsed() < 300)
+        {
+            return;
+        }
+        animationTimer.mark();
+        setImage(idle[imageIndex]);
+        imageIndex = (imageIndex + 1) % idle.length;
     }
     
     //GreenfootImage idle = new GreenfootImage("images/hero_idle/idle0.png");
     
-    int newWidth = 50;  
-    int newHeight = 50;
     public void act()
     {
-        // Add your action code here.
+        if(Greenfoot.isKeyDown("left"))
+        {
+            move(-1);
+        }
+        else if(Greenfoot.isKeyDown("right"))
+        {
+            move(1);
+        }// Add your action code here.
+        animateHero();
     }
+    
 }
