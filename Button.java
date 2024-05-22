@@ -12,8 +12,23 @@ public class Button extends Actor
      * Act - do whatever the Button wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private GreenfootImage playImage;
+    private World targetWorld;
+    
+    
+    
+    public Button(String playImageFile, World targetWorld)
+    {
+        playImage = new GreenfootImage(playImageFile);
+        setImage(playImage);
+        this.targetWorld = targetWorld;
+    }
+    
     public void act()
     {
-        // Add your action code here.
+        if(Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(targetWorld);
+        }
     }
 }

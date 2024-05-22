@@ -33,7 +33,11 @@ public class titleScreen extends World
         Label titleLabel = new Label("Space Invaders",70);
         addObject(titleLabel,320,50);
         
-        Label continueLabel = new Label("Press <space> to Play", 50);
-        addObject(continueLabel,300,250);
+
+        
+        MyWorld world = new MyWorld();
+
+        Button button = new Button("play.png", world);
+        addObject(button, getWidth() /2, getHeight()/2);
     }
 }
