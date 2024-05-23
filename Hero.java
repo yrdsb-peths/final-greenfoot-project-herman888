@@ -9,21 +9,36 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Hero extends Actor
 {
     
-    GreenfootImage[] idle = new GreenfootImage[6];
+    GreenfootImage[] idleRight = new GreenfootImage[6];
+    GreenfootImage[] idleLeft = new GreenfootImage[6];
+    
     SimpleTimer animationTimer = new SimpleTimer();
+    
+    String facing = "right";
+    
     public Hero()
     {
-        setImage(idle[0]);
-        for(int i = 0; i < 6; i++)
+        setImage(idleRight[0]);
+        for(int i = 0; i < idleRight.length; i++)
         {
-            idle[i] = new GreenfootImage("images/hero_walk/idle" + i + ".png");
+            idleRight[i] = new GreenfootImage("images/hero_walk/idle" + i + ".png");
             int newWidth = 150;  
             int newHeight = 150;
-            idle[i].scale(newWidth, newHeight);
+            idleRight[i].scale(newWidth, newHeight);
         }
         
-        setImage(idle[0]);
-        animationTimer.mark();
+        
+        
+        
+        for(int i = 0; i < idleLeft.length; i++)
+        {
+            idleLeft[i] = new GreenfootImage("images/hero_walk/idle" + i +".png");
+            idleLeft[i].mirrorHorizontally();
+            idleLeft[i].scale(150,150);
+        }
+        setImage(idleRight[0]);
+        //animationTimer.mark();
+        
     }
 
 
@@ -37,8 +52,28 @@ public class Hero extends Actor
             return;
         }
         animationTimer.mark();
-        setImage(idle[imageIndex]);
-        imageIndex = (imageIndex + 1) % idle.length;
+        
+        
+        
+        
+        if(facing.equals("right"))
+        {
+            setImage(idleRight[imageIndex]);
+            imageIndex = (imageIndex + 1) % idleRight.length;
+        }
+        
+        else
+        {
+            setImage(idleLeft[imageIndex]);
+            imageIndex = (imageIndex + 1) % idleLeft.length;
+        }
+        
+        
+        
+        
+        
+        
+        
     }
     
     //GreenfootImage idle = new GreenfootImage("images/hero_idle/idle0.png");
@@ -48,10 +83,12 @@ public class Hero extends Actor
         if(Greenfoot.isKeyDown("left"))
         {
             move(-1);
+            facing = "left";
         }
         else if(Greenfoot.isKeyDown("right"))
         {
             move(1);
+            facing = "right";
         }// Add your action code here.
         animateHero();
     }
