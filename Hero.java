@@ -11,10 +11,13 @@ public class Hero extends Actor
     
     GreenfootImage[] idleRight = new GreenfootImage[6];
     GreenfootImage[] idleLeft = new GreenfootImage[6];
+    GreenfootImage[] idleDown = new GreenfootImage[4];
     
     SimpleTimer animationTimer = new SimpleTimer();
     
     String facing = "right";
+    
+    boolean Down = false;
     
     public Hero()
     {
@@ -36,8 +39,14 @@ public class Hero extends Actor
             idleLeft[i].mirrorHorizontally();
             idleLeft[i].scale(150,150);
         }
+        
+        for(int i = 0; i < idleDown.length; i++)
+        {
+            idleDown[i] = new GreenfootImage("images/hero_idle/idle" + i + ".png");
+            idleDown[i].scale(150,150);
+        }
         setImage(idleRight[0]);
-        //animationTimer.mark();
+        animationTimer.mark();
         
     }
 
@@ -53,6 +62,13 @@ public class Hero extends Actor
         }
         animationTimer.mark();
         
+        if(Down)
+        {
+            setImage(idleDown[imageIndex]);
+            imageIndex = (imageIndex + 1) % idleDown.length;
+            return;
+        }
+        
         
         
         
@@ -60,6 +76,7 @@ public class Hero extends Actor
         {
             setImage(idleRight[imageIndex]);
             imageIndex = (imageIndex + 1) % idleRight.length;
+            
         }
         
         else
@@ -84,12 +101,17 @@ public class Hero extends Actor
         {
             move(-1);
             facing = "left";
+            
         }
         else if(Greenfoot.isKeyDown("right"))
         {
             move(1);
             facing = "right";
-        }// Add your action code here.
+        }
+        else if(Greenfoot.isKeyDown("space"))
+        {
+            Down = true;
+        }
         animateHero();
     }
     
