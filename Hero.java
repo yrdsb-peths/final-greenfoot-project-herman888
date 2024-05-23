@@ -15,6 +15,8 @@ public class Hero extends Actor
     
     SimpleTimer animationTimer = new SimpleTimer();
     
+    boolean playOnce = false;
+    
     String facing = "right";
     
     boolean Down = false;
@@ -65,8 +67,22 @@ public class Hero extends Actor
         if(Down)
         {
             setImage(idleDown[imageIndex]);
-            imageIndex = (imageIndex + 1) % idleDown.length;
+            if(imageIndex < idleDown.length -1)
+            {
+                imageIndex++;
+            }
+            else
+            {
+                if(!playOnce)
+                {
+                    Down = false;
+                    imageIndex = 0;
+                    
+                }
+            }
             return;
+            
+           
         }
         
         
@@ -111,6 +127,7 @@ public class Hero extends Actor
         else if(Greenfoot.isKeyDown("space"))
         {
             Down = true;
+            playOnce = true;
         }
         animateHero();
     }
