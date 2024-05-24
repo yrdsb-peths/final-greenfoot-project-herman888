@@ -14,12 +14,15 @@ public class Hero extends Actor
     GreenfootImage[] idleDown = new GreenfootImage[4];
     
     SimpleTimer animationTimer = new SimpleTimer();
+    SimpleTimer transitionTimer = new SimpleTimer();
     
     boolean playOnce = false;
     
     String facing = "right";
     
     boolean Down = false;
+    
+    boolean transitioning = false;
     
     public Hero()
     {
@@ -75,6 +78,8 @@ public class Hero extends Actor
             {
                 if(!playOnce)
                 {
+                    transitioning = true;
+                    transitionTimer.mark();
                     Down = false;
                     imageIndex = 0;
                     
@@ -83,6 +88,18 @@ public class Hero extends Actor
             return;
             
            
+        }
+        
+        if(transitioning)
+        {
+            if(transitionTimer.millisElapsed() >= 2000)
+            {
+                transitioning = false;
+            }
+            else
+            {
+                return;
+            }
         }
         
         
@@ -129,6 +146,16 @@ public class Hero extends Actor
             Down = true;
             playOnce = true;
         }
+        else if(Down && !Greenfoot.isKeyDown("space"))
+        {
+            playOnce = false;
+        }
+        
+       
+        
+        
+        
+        
         animateHero();
     }
     
