@@ -15,6 +15,7 @@ public class Hero extends Actor
     
     SimpleTimer animationTimer = new SimpleTimer();
     SimpleTimer transitionTimer = new SimpleTimer();
+    SimpleTimer fireTimer = new SimpleTimer();
     
     boolean playOnce = false;
     
@@ -52,6 +53,7 @@ public class Hero extends Actor
         }
         setImage(idleRight[0]);
         animationTimer.mark();
+        fireTimer.mark();
         
     }
 
@@ -126,6 +128,17 @@ public class Hero extends Actor
         
     }
     
+    public void fireBullet()
+    {
+        if(fireTimer.millisElapsed() > 500)
+        {
+            Bullet bullet = new Bullet();
+            getWorld().addObject(bullet, getX(), getY());
+            bullet.setRotation(270);
+            fireTimer.mark();
+        }
+    }
+    
     //GreenfootImage idle = new GreenfootImage("images/hero_idle/idle0.png");
     
     public void act()
@@ -145,6 +158,7 @@ public class Hero extends Actor
         {
             Down = true;
             playOnce = true;
+            fireBullet();
         }
         else if(Down && !Greenfoot.isKeyDown("space"))
         {
