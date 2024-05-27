@@ -12,7 +12,7 @@ public class Bullet extends Actor
     public Bullet()
     {
         GreenfootImage image = new GreenfootImage("images/bulett2.png");
-        image.scale(50,50);
+        image.scale(75,75);
         setImage(image);
     }
     /**

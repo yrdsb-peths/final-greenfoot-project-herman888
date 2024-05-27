@@ -94,7 +94,7 @@ public class Hero extends Actor
         
         if(transitioning)
         {
-            if(transitionTimer.millisElapsed() >= 2000)
+            if(transitionTimer.millisElapsed() >= 500)
             {
                 transitioning = false;
             }
@@ -130,11 +130,25 @@ public class Hero extends Actor
     
     public void fireBullet()
     {
+
         if(fireTimer.millisElapsed() > 500)
         {
             Bullet bullet = new Bullet();
+            bullet.setImage(new GreenfootImage("images/bulett2.png"));
+            bullet.getImage().scale(50,50);
+            
             getWorld().addObject(bullet, getX(), getY());
-            bullet.setRotation(270);
+            
+            
+            if(facing.equals("right"))
+            {
+                bullet.setRotation(0);
+               
+            }
+            else if(facing.equals("left"))
+            {
+                bullet.setRotation(180);
+            }
             fireTimer.mark();
         }
     }
@@ -163,6 +177,11 @@ public class Hero extends Actor
         else if(Down && !Greenfoot.isKeyDown("space"))
         {
             playOnce = false;
+        }
+        
+        if(Greenfoot.isKeyDown("down"))
+        {
+            fireBullet();
         }
         
        
