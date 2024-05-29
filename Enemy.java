@@ -42,7 +42,8 @@ public class Enemy extends Actor
         if(!dying)
         {
             moveLeft();
-            animateEnemy();// Add your action code here.
+            animateEnemy();
+            bulletDetection();// Add your action code here.
         }
         else
         {
@@ -89,7 +90,7 @@ public class Enemy extends Actor
         }
         animationTimer.mark();
         
-        if(imageIndex < deadIdle.length)
+        if(imageIndex < deadIdle.length - 1)
         {
             setImage(deadIdle[imageIndex]);
             imageIndex++;
@@ -100,5 +101,21 @@ public class Enemy extends Actor
         }
         
         
+    }
+    
+    public boolean isDying()
+    {
+        return dying;
+    }
+    
+    public void bulletDetection()
+    {
+        Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
+        
+        if(bullet != null)
+        {
+            getWorld().removeObject(bullet);
+            die();
+        }
     }
 }

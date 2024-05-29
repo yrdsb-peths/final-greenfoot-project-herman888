@@ -21,10 +21,12 @@ public class Bullet extends Actor
      */
     public void act()
     {
-        move(5);
         checkCollision();
+        move(5);
+       
         if(isAtEdge())
         {
+            
             getWorld().removeObject(this);
         }
     }
@@ -32,10 +34,11 @@ public class Bullet extends Actor
     private void checkCollision()
     {
         Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
-        if(enemy != null)
+        if(enemy != null && enemy.getWorld() !=null && !enemy.isDying())
         {
             enemy.die();
             getWorld().removeObject(this);
+            //enemy.die();
         }
     }
 }
