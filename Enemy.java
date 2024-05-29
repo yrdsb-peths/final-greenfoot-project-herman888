@@ -10,8 +10,10 @@ public class Enemy extends Actor
 {
     
     GreenfootImage[] idleLeft = new GreenfootImage[4];
+    GreenfootImage[] deadIdle = new GreenfootImage[8];
     SimpleTimer animationTimer = new SimpleTimer();
     int imageIndex = 0;
+    boolean dying = false;
     
     public Enemy()
     {
@@ -19,6 +21,12 @@ public class Enemy extends Actor
         {
             idleLeft[i] = new GreenfootImage("images/enemy_idle/idle" + i + ".png");
             idleLeft[i].scale(75,75);
+        }
+        
+        for(int i = 0; i < deadIdle.length; i++)
+        {
+            deadIdle[i] = new GreenfootImage("images/enemy_dead/dead" + i +".png");
+            deadIdle[i].scale(75,75);
         }
             setImage(idleLeft[0]);
             animationTimer.mark();
@@ -31,8 +39,16 @@ public class Enemy extends Actor
      */
     public void act()
     {
-        moveLeft();
-        animateEnemy();// Add your action code here.
+        if(!dying)
+        {
+            moveLeft();
+            animateEnemy();// Add your action code here.
+        }
+        else
+        {
+            animateDeath();
+        }
+        
     }
     
     public void moveLeft()
@@ -55,5 +71,34 @@ public class Enemy extends Actor
         animationTimer.mark();
         setImage(idleLeft[imageIndex]);
         imageIndex = (imageIndex + 1) % idleLeft.length;
+    }
+    
+    public void die()
+    {
+        dying = true;
+        imageIndex = 0;
+        animationTimer.mark();
+        
+    }
+    
+    public void animateDeath()
+    {
+        if(animationTimer.millisElapsed()<300)
+        {
+            return;
+        }
+        animationTimer.mark();
+        
+        if(imageIndex < deadIdle.length)
+        {
+            setImage(deadIdle[imageIndex]);
+            imageIndex++;
+        }
+        else
+        {
+            getWorld().removeObject(this);
+        }
+        
+        
     }
 }

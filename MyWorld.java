@@ -34,7 +34,7 @@ public class MyWorld extends World
         if(enemySpawnTimer.millisElapsed() > 5000)
         {
             Enemy enemy = new Enemy();
-            addObject(enemy, getWidth(), Greenfoot.getRandomNumber(getHeight()));
+            addObject(enemy, getWidth(), 300);
             enemySpawnTimer.mark();
         }
     }

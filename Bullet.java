@@ -22,8 +22,19 @@ public class Bullet extends Actor
     public void act()
     {
         move(5);
+        checkCollision();
         if(isAtEdge())
         {
+            getWorld().removeObject(this);
+        }
+    }
+    
+    private void checkCollision()
+    {
+        Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
+        if(enemy != null)
+        {
+            enemy.die();
             getWorld().removeObject(this);
         }
     }
