@@ -79,12 +79,13 @@ public class Enemy extends Actor
         dying = true;
         imageIndex = 0;
         animationTimer.mark();
+        spawnCoin();
         
     }
     
     public void animateDeath()
     {
-        if(animationTimer.millisElapsed()<300)
+        if(animationTimer.millisElapsed()<100)
         {
             return;
         }
@@ -117,5 +118,11 @@ public class Enemy extends Actor
             getWorld().removeObject(bullet);
             die();
         }
+    }
+    
+    public void spawnCoin()
+    {
+        Coin coin = new Coin();
+        getWorld().addObject(coin, getX(), getY());
     }
 }
