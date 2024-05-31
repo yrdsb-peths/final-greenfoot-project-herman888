@@ -17,6 +17,7 @@ public class Hero extends Actor
     SimpleTimer transitionTimer = new SimpleTimer();
     SimpleTimer fireTimer = new SimpleTimer();
     
+    int score = 0;
     boolean playOnce = false;
     
     String facing = "right";
@@ -185,11 +186,23 @@ public class Hero extends Actor
         }
         
        
-        
+        eat();
         
         
         
         animateHero();
     }
+    
+    public void eat()
+    {
+        if(isTouching(Coin.class))
+        {
+            removeTouching(Coin.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.increaseScore();
+        }
+    }
+    
+    
     
 }

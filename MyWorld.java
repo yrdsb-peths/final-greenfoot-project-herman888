@@ -10,6 +10,9 @@ public class MyWorld extends World
 {
 
     SimpleTimer enemySpawnTimer = new SimpleTimer();
+    private int score = 0;
+    private Label scoreLabel;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -23,12 +26,30 @@ public class MyWorld extends World
         addObject(hero, 300, 300);
         
         enemySpawnTimer.mark();
+        
+        scoreLabel = new Label(0,80);
+        addObject(scoreLabel, 50, 50);
+    }
+    
+    public void increaseScore()
+    {
+        score++;
+        scoreLabel.setValue(score);
     }
     
     public void act()
     {
         spawnEnemy();
     }
+    
+    //public void increaseScore(int points)
+    //{
+        //score += points;
+        //scoreLabel.setText("Score: " + score);
+        
+    //}
+    
+    
     public void spawnEnemy()
     {
         if(enemySpawnTimer.millisElapsed() > 5000)
