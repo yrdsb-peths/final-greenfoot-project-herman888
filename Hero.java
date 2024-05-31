@@ -12,6 +12,7 @@ public class Hero extends Actor
     GreenfootImage[] idleRight = new GreenfootImage[6];
     GreenfootImage[] idleLeft = new GreenfootImage[6];
     GreenfootImage[] idleDown = new GreenfootImage[4];
+    GreenfootSound coinSound = new GreenfootSound("coinsound.mp3");
     
     SimpleTimer animationTimer = new SimpleTimer();
     SimpleTimer transitionTimer = new SimpleTimer();
@@ -200,6 +201,7 @@ public class Hero extends Actor
             removeTouching(Coin.class);
             MyWorld world = (MyWorld) getWorld();
             world.increaseScore();
+            coinSound.play();
         }
     }
     
