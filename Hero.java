@@ -74,7 +74,7 @@ public class Hero extends Actor
         if(Down)
         {
             setImage(idleDown[imageIndex]);
-            if(imageIndex < idleDown.length -1)
+            if(imageIndex < idleDown.length )
             {
                 imageIndex++;
             }
@@ -88,7 +88,16 @@ public class Hero extends Actor
                     imageIndex = 0;
                     
                 }
+                
+                
+                
             }
+            if(imageIndex >= idleDown.length) 
+            {
+            System.out.println("imageIndex out of bounds, resetting to 0");
+            imageIndex = 0;
+            }
+        
             return;
             
            
@@ -141,8 +150,12 @@ public class Hero extends Actor
             
             getWorld().addObject(bullet, getX(), getY());
             
+            if (Greenfoot.isKeyDown("space"))
+            {
+                bullet.setRotation(270); 
+            }
             
-            if(facing.equals("right"))
+            else if(facing.equals("right"))
             {
                 bullet.setRotation(0);
                
@@ -151,6 +164,8 @@ public class Hero extends Actor
             {
                 bullet.setRotation(180);
             }
+            
+            
             fireTimer.mark();
         }
     }

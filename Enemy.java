@@ -113,7 +113,7 @@ public class Enemy extends Actor
     {
         Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
         
-        if(bullet != null)
+        if(bullet != null && getWorld() != null)
         {
             getWorld().removeObject(bullet);
             die();
