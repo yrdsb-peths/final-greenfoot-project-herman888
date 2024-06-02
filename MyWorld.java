@@ -40,11 +40,20 @@ public class MyWorld extends World
         hearts = new Heart[3];
         currentHeartIndex = hearts.length - 1;
         
-        for(int i = 0; i < hearts.length; i++)
-        {
-            hearts[i] = new Heart();
-            addObject(hearts[i], x + i * Heart.WIDTH,20 50 + i * 75, 20);
-        }
+        int heart0X = 250;
+        int heart1X = 300;
+        int heart2X = 350;
+        
+        int heartY = 20;
+        
+        hearts[0] = new Heart();
+        addObject(hearts[0], heart0X, heartY);
+        
+        hearts[1] = new Heart();
+        addObject(hearts[1], heart1X, heartY);
+        
+        hearts[2] = new Heart();
+        addObject(hearts[2], heart2X, heartY);
         
         //gameOverTimer = new SimpleTimer();
         
