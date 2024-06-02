@@ -20,6 +20,8 @@ public class MyWorld extends World
     private boolean isGameOver = false;
     private int gameOverDelay = 300;
     
+    private boolean boxSpawned = false;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -41,10 +43,10 @@ public class MyWorld extends World
         currentHeartIndex = hearts.length - 1;
         
         int heart0X = 250;
-        int heart1X = 300;
-        int heart2X = 350;
+        int heart1X = 325;
+        int heart2X = 400;
         
-        int heartY = 20;
+        int heartY = 40;
         
         hearts[0] = new Heart();
         addObject(hearts[0], heart0X, heartY);
@@ -75,6 +77,8 @@ public class MyWorld extends World
         }
     }
     
+    
+    
     public void gameOver()
     {
         if(score > highestScore)
@@ -96,6 +100,19 @@ public class MyWorld extends World
     {
         score++;
         scoreLabel.setValue(score);
+        
+        if(score % 5 == 0)
+        {
+            createBox();
+        }
+    }
+    
+    public void createBox()
+    {
+        Box box = new Box();
+        int x = Greenfoot.getRandomNumber(600);
+        int y = 0;
+        addObject(box, x, y);
     }
     
     public void act()
@@ -103,6 +120,8 @@ public class MyWorld extends World
         if(!isGameOver)
         {
            spawnEnemy(); 
+           
+           
         }
         else
         {
@@ -115,6 +134,8 @@ public class MyWorld extends World
             {
                 Greenfoot.setWorld(new titleScreen());
             }
+            
+            
         }
     }
     

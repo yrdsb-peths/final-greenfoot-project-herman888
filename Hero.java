@@ -11,7 +11,7 @@ public class Hero extends Actor
     
     GreenfootImage[] idleRight = new GreenfootImage[6];
     GreenfootImage[] idleLeft = new GreenfootImage[6];
-    GreenfootImage[] idleDown = new GreenfootImage[4];
+    GreenfootImage[] idleSpace = new GreenfootImage[4];
     GreenfootSound coinSound = new GreenfootSound("coinsound.mp3");
     GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
     
@@ -49,10 +49,10 @@ public class Hero extends Actor
             idleLeft[i].scale(150,150);
         }
         
-        for(int i = 0; i < idleDown.length; i++)
+        for(int i = 0; i < idleSpace.length; i++)
         {
-            idleDown[i] = new GreenfootImage("images/hero_idle/idle" + i + ".png");
-            idleDown[i].scale(150,150);
+            idleSpace[i] = new GreenfootImage("images/hero_idle/idle" + i + ".png");
+            idleSpace[i].scale(150,150);
         }
         setImage(idleRight[0]);
         animationTimer.mark();
@@ -74,8 +74,8 @@ public class Hero extends Actor
         
         if(Down)
         {
-            setImage(idleDown[imageIndex]);
-            if(imageIndex < idleDown.length )
+            setImage(idleSpace[imageIndex]);
+            if(imageIndex < idleSpace.length )
             {
                 imageIndex++;
             }
@@ -93,7 +93,7 @@ public class Hero extends Actor
                 
                 
             }
-            if(imageIndex >= idleDown.length) 
+            if(imageIndex >= idleSpace.length) 
             {
             System.out.println("imageIndex out of bounds, resetting to 0");
             imageIndex = 0;
@@ -190,10 +190,12 @@ public class Hero extends Actor
         {
             Down = true;
             playOnce = true;
+            imageIndex = 3;
             fireBullet();
         }
         else if(Down && !Greenfoot.isKeyDown("space"))
         {
+            Down = false;
             playOnce = false;
         }
         
