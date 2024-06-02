@@ -200,6 +200,7 @@ public class Hero extends Actor
         {
             fireBullet();
         }
+        checkCollision();
         
        
         eat();
@@ -207,6 +208,17 @@ public class Hero extends Actor
         
         
         animateHero();
+    }
+    
+    public void checkCollision()
+    {
+        Actor enemy = getOneIntersectingObject(Enemy.class);
+        if(enemy != null)
+        {
+            getWorld().removeObject(enemy);
+            MyWorld world = (MyWorld)getWorld();
+            world.removeHeart();
+        }
     }
     
     public void eat()

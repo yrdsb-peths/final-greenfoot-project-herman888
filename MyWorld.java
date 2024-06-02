@@ -13,6 +13,9 @@ public class MyWorld extends World
     private int score = 0;
     private Label scoreLabel;
     
+    private Heart[] hearts;
+    private int currentHeartIndex;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -30,15 +33,26 @@ public class MyWorld extends World
         scoreLabel = new Label(0,80);
         addObject(scoreLabel, 50, 50);
         
-        Heart heart0 = new Heart();
-        Heart heart1 = new Heart();
-        Heart heart2 = new Heart();
+        hearts = new Heart[3];
+        currentHeartIndex = hearts.length - 1;
+        
+        for(int i = 0; i < hearts.length; i++)
+        {
+            hearts[i] = new Heart();
+            addObject(hearts[i], 50 + i * 75, 20);
+        }
         
         
-        addObject(heart0, getWidth() / 2, 50);
-        addObject(heart1, getWidth() /2 + 75, 50);
-        addObject(heart2, getWidth() /2 - 75, 50);
-        
+    }
+    
+    public void removeHeart()
+    {
+        if(currentHeartIndex >= 0)
+        {
+            removeObject(hearts[currentHeartIndex]);
+            hearts[currentHeartIndex] = null;
+            currentHeartIndex--;
+        }
     }
     
     public void increaseScore()
