@@ -13,6 +13,7 @@ public class Hero extends Actor
     GreenfootImage[] idleLeft = new GreenfootImage[6];
     GreenfootImage[] idleDown = new GreenfootImage[4];
     GreenfootSound coinSound = new GreenfootSound("coinsound.mp3");
+    GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
     
     SimpleTimer animationTimer = new SimpleTimer();
     SimpleTimer transitionTimer = new SimpleTimer();
@@ -217,7 +218,9 @@ public class Hero extends Actor
         {
             getWorld().removeObject(enemy);
             MyWorld world = (MyWorld)getWorld();
+            deathSound.play();
             world.removeHeart();
+            
         }
     }
     

@@ -39,5 +39,8 @@ public class titleScreen extends World
 
         Button button = new Button("play.png", world);
         addObject(button, 147, 280);
+        
+        Label highestScoreLabel = new Label("Highest Score: " + MyWorld.getHighestScore(),60);
+        addObject(highestScoreLabel, getWidth() / 2, getHeight() / 2 + 2);
     }
 }

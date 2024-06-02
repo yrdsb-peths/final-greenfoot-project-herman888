@@ -11,10 +11,14 @@ public class MyWorld extends World
 
     SimpleTimer enemySpawnTimer = new SimpleTimer();
     private int score = 0;
+    public static int highestScore = 0;
     private Label scoreLabel;
     
     private Heart[] hearts;
     private int currentHeartIndex;
+    
+    private boolean isGameOver = false;
+    private int gameOverDelay = 300;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -39,8 +43,10 @@ public class MyWorld extends World
         for(int i = 0; i < hearts.length; i++)
         {
             hearts[i] = new Heart();
-            addObject(hearts[i], 50 + i * 75, 20);
+            addObject(hearts[i], x + i * Heart.WIDTH,20 50 + i * 75, 20);
         }
+        
+        //gameOverTimer = new SimpleTimer();
         
         
     }
@@ -52,8 +58,30 @@ public class MyWorld extends World
             removeObject(hearts[currentHeartIndex]);
             hearts[currentHeartIndex] = null;
             currentHeartIndex--;
+            
+            if(currentHeartIndex < 0)
+            {
+                gameOver();
+            }
         }
     }
+    
+    public void gameOver()
+    {
+        if(score > highestScore)
+        {
+            highestScore = score;
+        }
+        
+        Label gameOverLabel = new Label("Game Over", 100);
+        addObject(gameOverLabel, 300, 200);
+        
+        isGameOver = true;
+        gameOverDelay = 300;
+        
+    }
+    
+    
     
     public void increaseScore()
     {
@@ -63,15 +91,25 @@ public class MyWorld extends World
     
     public void act()
     {
-        spawnEnemy();
+        if(!isGameOver)
+        {
+           spawnEnemy(); 
+        }
+        else
+        {
+            if(gameOverDelay > 0)
+            {
+                gameOverDelay--;
+                
+            }
+            else
+            {
+                Greenfoot.setWorld(new titleScreen());
+            }
+        }
     }
     
-    //public void increaseScore(int points)
-    //{
-        //score += points;
-        //scoreLabel.setText("Score: " + score);
-        
-    //}
+  
     
     
     public void spawnEnemy()
@@ -84,5 +122,11 @@ public class MyWorld extends World
         }
     }
     
+    public static int getHighestScore()
+    {
+        return highestScore;
+    }
+    
+   
     
 }

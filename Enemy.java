@@ -85,7 +85,7 @@ public class Enemy extends Actor
     
     public void animateDeath()
     {
-        if(animationTimer.millisElapsed()<100)
+        if(animationTimer.millisElapsed()<45)
         {
             return;
         }
