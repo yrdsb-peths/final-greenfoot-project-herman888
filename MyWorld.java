@@ -29,6 +29,16 @@ public class MyWorld extends World
         
         scoreLabel = new Label(0,80);
         addObject(scoreLabel, 50, 50);
+        
+        Heart heart0 = new Heart();
+        Heart heart1 = new Heart();
+        Heart heart2 = new Heart();
+        
+        
+        addObject(heart0, getWidth() / 2, 50);
+        addObject(heart1, getWidth() /2 + 75, 50);
+        addObject(heart2, getWidth() /2 - 75, 50);
+        
     }
     
     public void increaseScore()
