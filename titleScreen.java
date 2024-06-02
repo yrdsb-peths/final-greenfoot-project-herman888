@@ -29,6 +29,8 @@ public class titleScreen extends World
         Hero hero = new Hero();
         addObject(hero,450,275);
         
+        World instructionWorld = new instructionScreen();
+        
         
         Label titleLabel = new Label("Space Invaders",70);
         addObject(titleLabel,320,50);
@@ -38,9 +40,12 @@ public class titleScreen extends World
         MyWorld world = new MyWorld();
 
         Button button = new Button("play.png", world);
-        addObject(button, 147, 280);
+        addObject(button, 132, 150);
+        
+        Button2 button1 = new Button2("instructions.png", instructionWorld);
+        addObject(button1, 132,280);
         
         Label highestScoreLabel = new Label("Highest Score: " + MyWorld.getHighestScore(),60);
-        addObject(highestScoreLabel, getWidth() / 2, getHeight() / 2 + 2);
+        addObject(highestScoreLabel, 230, 370);
     }
 }

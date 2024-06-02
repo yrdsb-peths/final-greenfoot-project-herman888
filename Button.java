@@ -17,9 +17,11 @@ public class Button extends Actor
     
     
     
+    
     public Button(String playImageFile, World targetWorld)
     {
-        playImage = new GreenfootImage(playImageFile);
+        playImage = new GreenfootImage("play.png");
+        playImage.scale(300,150);
         setImage(playImage);
         this.targetWorld = targetWorld;
     }
