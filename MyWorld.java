@@ -20,7 +20,7 @@ public class MyWorld extends World
     private boolean isGameOver = false;
     private int gameOverDelay = 300;
     
-    private boolean boxSpawned = false;
+    public boolean boxSpawned = false;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -101,7 +101,7 @@ public class MyWorld extends World
         score++;
         scoreLabel.setValue(score);
         
-        if(score % 5 == 0)
+        if(score % 2 == 0)
         {
             createBox();
         }
