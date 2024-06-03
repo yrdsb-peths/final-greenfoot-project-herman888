@@ -79,8 +79,10 @@ public class Box extends Actor
         }
         else
         {
-            animating = false;
             MyWorld world = (MyWorld) getWorld();
+            animating = false;
+            world.addObject(new Magnet(), getX(), 300);
+            getWorld().removeObject(this);
            
             
         }
