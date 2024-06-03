@@ -10,6 +10,7 @@ public class MyWorld extends World
 {
 
     SimpleTimer enemySpawnTimer = new SimpleTimer();
+    SimpleTimer magnetTimer = new SimpleTimer();
     private int score = 0;
     public static int highestScore = 0;
     private Label scoreLabel;
@@ -21,6 +22,7 @@ public class MyWorld extends World
     private int gameOverDelay = 300;
     
     public boolean boxSpawned = false;
+    private boolean magnetActive = false;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -139,6 +141,21 @@ public class MyWorld extends World
         }
     }
     
+    public void activateMagnet()
+    {
+        magnetActive = true;
+        magnetTimer.mark();
+    }
+    
+    public void checkMagnetEffect()
+    {
+        if(magnetActive && magnetTimer.millisElapsed()> 5000)
+        {
+            magnetActive = false;
+        }
+    }
+    
+    
   
     
     
@@ -156,6 +173,7 @@ public class MyWorld extends World
     {
         return highestScore;
     }
+    
     
    
     

@@ -207,6 +207,7 @@ public class Hero extends Actor
         
        
         eat();
+        collectMagnet();
         
         
         
@@ -234,6 +235,18 @@ public class Hero extends Actor
             MyWorld world = (MyWorld) getWorld();
             world.increaseScore();
             coinSound.play();
+        }
+    }
+    
+    public void collectMagnet()
+    {
+        Actor magnet = getOneIntersectingObject(Magnet.class);
+        if(magnet != null)
+        {
+            getWorld().removeObject(magnet);
+            MyWorld world = (MyWorld) getWorld();
+            world.activateMagnet();
+            
         }
     }
     
