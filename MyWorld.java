@@ -68,6 +68,8 @@ public class MyWorld extends World
         
     }
     
+    
+    //This allows me to remove the heart each death and when it hits 0 hearts game is over
     public void removeHeart()
     {
         if(currentHeartIndex >= 0)
@@ -84,7 +86,8 @@ public class MyWorld extends World
     }
     
     
-    
+    // This what occurs when the game is over it checks 
+    // my score at the end as well as displays a screem
     public void gameOver()
     {
         if(score > highestScore)
@@ -101,18 +104,20 @@ public class MyWorld extends World
     }
     
     
-    
+    // This is what happens in my code when coins are being tooken by 
+    // the hero, every 5 points a box spawns, at a random x value
     public void increaseScore()
     {
         score++;
         scoreLabel.setValue(score);
         
-        if(score % 2 == 0)
+        if(score % 5 == 0)
         {
             createBox();
         }
     }
     
+    // Creating the box
     public void createBox()
     {
         Box box = new Box();
@@ -121,6 +126,7 @@ public class MyWorld extends World
         addObject(box, x, y);
     }
     
+    // spawns enemy and checks if magnet on
     public void act()
     {
         if(!isGameOver)
@@ -132,11 +138,13 @@ public class MyWorld extends World
         }
         else
         {
+            //This is my delay
             if(gameOverDelay > 0)
             {
                 gameOverDelay--;
                 
             }
+            //This is taking me back to title screen
             else
             {
                 Greenfoot.setWorld(new titleScreen());
@@ -146,12 +154,14 @@ public class MyWorld extends World
         }
     }
     
+    
     public void activateMagnet()
     {
         magnetActive = true;
         magnetTimer.mark();
     }
     
+    // This is to make sure magnet only last 5000 millis
     public void checkMagnetEffect()
     {
         if(magnetActive && magnetTimer.millisElapsed()> 5000)
@@ -159,11 +169,15 @@ public class MyWorld extends World
             magnetActive = false;
             collectAllCoins();
         }
+        else if(magnetActive)
+        {
+            collectAllCoins();
+        }
     }
     
     
   
-    
+    // spawn an enemy every 5 millis
     
     public void spawnEnemy()
     {
@@ -185,6 +199,8 @@ public class MyWorld extends World
         return magnetActive;
     }
     
+    
+    // collect all the coins from the array that i made contaning all the coins that have been collected / created
     public void collectAllCoins()
     {
         for (int i = 0; i < coinIndex; i++)
@@ -196,8 +212,8 @@ public class MyWorld extends World
         coinIndex = 0;  
     }
     
-    //This is just a test in my logic
     
+    // removes the coin from the array
     public void removeCoin(Coin coin)
     {
         for(int i = 0; i < coinIndex; i++)
@@ -216,6 +232,7 @@ public class MyWorld extends World
         
     }
     
+    // used in enemy class
     public void addCoin(Coin coin) 
     {
         if (coinIndex < MAX_COINS) 
