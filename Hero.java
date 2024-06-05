@@ -204,6 +204,7 @@ public class Hero extends Actor
             fireBullet();
         }
         checkCollision();
+        checkForCoin();
         
        
         eat();
@@ -247,6 +248,19 @@ public class Hero extends Actor
             MyWorld world = (MyWorld) getWorld();
             world.activateMagnet();
             
+        }
+    }
+    
+    public void checkForCoin()
+    {
+        Coin coin = (Coin) getOneIntersectingObject(Coin.class);
+        if(coin != null)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            world.increaseScore();
+            world.removeCoin(coin);
+            coinSound.play();
+            world.removeObject(coin);
         }
     }
     

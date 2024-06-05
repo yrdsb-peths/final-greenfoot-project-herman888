@@ -122,7 +122,17 @@ public class Enemy extends Actor
     
     public void spawnCoin()
     {
-        Coin coin = new Coin();
-        getWorld().addObject(coin, getX(), getY());
+        MyWorld world = (MyWorld) getWorld();
+        if(world.isMagnetActive())
+        {
+            world.increaseScore();
+        }
+        else
+        {
+            Coin coin = new Coin();
+            getWorld().addObject(coin, getX(), getY());
+            world.addCoin(coin);
+        }
+        
     }
 }

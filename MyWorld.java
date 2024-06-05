@@ -24,6 +24,10 @@ public class MyWorld extends World
     public boolean boxSpawned = false;
     private boolean magnetActive = false;
     
+    private static final int MAX_COINS = 50;
+    private Coin[] coins = new Coin[MAX_COINS];
+    private int coinIndex = 0;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -122,6 +126,7 @@ public class MyWorld extends World
         if(!isGameOver)
         {
            spawnEnemy(); 
+           checkMagnetEffect();
            
            
         }
@@ -152,6 +157,7 @@ public class MyWorld extends World
         if(magnetActive && magnetTimer.millisElapsed()> 5000)
         {
             magnetActive = false;
+            collectAllCoins();
         }
     }
     
@@ -174,7 +180,50 @@ public class MyWorld extends World
         return highestScore;
     }
     
+    public boolean isMagnetActive()
+    {
+        return magnetActive;
+    }
     
+    public void collectAllCoins()
+    {
+        for (int i = 0; i < coinIndex; i++)
+        {
+            increaseScore();
+            removeObject(coins[i]);
+            coins[i] = null; 
+        }
+        coinIndex = 0;  
+    }
+    
+    //This is just a test in my logic
+    
+    public void removeCoin(Coin coin)
+    {
+        for(int i = 0; i < coinIndex; i++)
+        {
+            if(coins[i] == coin)
+            {
+                for(int j = i; j < coinIndex - 1; j++)
+                {
+                    coins[j] = coins[j + 1];
+                }
+                coins[coinIndex - 1] = null;
+                coinIndex--;
+                break;
+            }
+        }
+        
+    }
+    
+    public void addCoin(Coin coin) 
+    {
+        if (coinIndex < MAX_COINS) 
+        {
+            coins[coinIndex] = coin;
+            coinIndex++;
+        }
+    }
    
     
 }
