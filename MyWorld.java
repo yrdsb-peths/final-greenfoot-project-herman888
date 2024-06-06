@@ -10,6 +10,7 @@ public class MyWorld extends World
 {
 
     SimpleTimer enemySpawnTimer = new SimpleTimer();
+    SimpleTimer zombieSpawnTimer = new SimpleTimer();
     SimpleTimer magnetTimer = new SimpleTimer();
     private int score = 0;
     public static int highestScore = 0;
@@ -132,6 +133,7 @@ public class MyWorld extends World
         if(!isGameOver)
         {
            spawnEnemy(); 
+           spawnZombie();
            checkMagnetEffect();
            
            
@@ -188,6 +190,16 @@ public class MyWorld extends World
             Enemy enemy = new Enemy();
             addObject(enemy, getWidth(), 300);
             enemySpawnTimer.mark();
+        }
+    }
+    
+    public void spawnZombie()
+    {
+        if(zombieSpawnTimer.millisElapsed() > 7000)
+        {
+            Zombie zombie = new Zombie();
+            addObject(zombie, getWidth(), 100);
+            zombieSpawnTimer.mark();
         }
     }
     
