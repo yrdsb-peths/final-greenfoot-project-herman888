@@ -111,7 +111,7 @@ public class MyWorld extends World
         score++;
         scoreLabel.setValue(score);
         
-        if(score % 5 == 0)
+        if(score % 2 == 0)
         {
             createBox();
         }
@@ -159,12 +159,14 @@ public class MyWorld extends World
     {
         magnetActive = true;
         magnetTimer.mark();
+        Clock clock = new Clock();
+        addObject(clock, 550, 30);
     }
     
     // This is to make sure magnet only last 5000 millis
     public void checkMagnetEffect()
     {
-        if(magnetActive && magnetTimer.millisElapsed()> 5000)
+        if(magnetActive && magnetTimer.millisElapsed()> 6000)
         {
             magnetActive = false;
             collectAllCoins();
