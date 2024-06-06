@@ -11,7 +11,7 @@ public class Clock extends Actor
     
     private int imageIndex = 0;
     
-    GreenfootImage[] idleClock = new GreenfootImage[12];
+    GreenfootImage[] idleClock = new GreenfootImage[6];
     SimpleTimer animationTimer = new SimpleTimer();
     /**
      * Act - do whatever the Clock wants to do. This method is called whenever
@@ -23,7 +23,7 @@ public class Clock extends Actor
         setImage(idleClock[0]);
         for(int i = 0; i < idleClock.length; i++)
         {
-            idleClock[i] = new GreenfootImage("images/clock_idle/clock"+ i + ".png");
+            idleClock[i] = new GreenfootImage("images/clockbar_idle/clockbar"+ i + ".png");
             idleClock[i].scale(100,100);
         }
         animationTimer.mark();
@@ -44,7 +44,7 @@ public class Clock extends Actor
     
     private void animateClock()
     {
-        if(animationTimer.millisElapsed() > 500)
+        if(animationTimer.millisElapsed() > 1000)
         {
            imageIndex = (imageIndex + 1) % idleClock.length;
             setImage(idleClock[imageIndex]); 
