@@ -35,6 +35,8 @@ public class MyWorld extends World
     private int zombieSpawnInterveral = 7000;
     private int spawnDecrease = 500;
     
+    private int extraEnemyCount = 0;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -126,10 +128,28 @@ public class MyWorld extends World
             createBox();
         }
         
-        if(score % 2 == 0)
+        if(score % 3== 0)
         {
             levelUp();
         }
+        if(score % 10 == 0)
+        {
+            extraEnemyCount++;
+        }
+        
+        spawnEnemy();
+        
+        for(int i = 0; i < extraEnemyCount; i++)
+        {
+            spawnExtraEnemy();
+        }
+    }
+    
+    private void spawnExtraEnemy()
+    {
+        Enemy extraEnemy = new Enemy();
+        addObject(extraEnemy, getWidth(), 300);
+    
     }
     
     public void levelUp()
@@ -139,6 +159,12 @@ public class MyWorld extends World
         
         enemySpawnInterveral = Math.max(1000, enemySpawnInterveral - spawnDecrease);
         zombieSpawnInterveral = Math.max(1000, zombieSpawnInterveral - spawnDecrease);
+        
+        Hero hero = getObjects(Hero.class).get(0);
+        if(hero != null)
+        {
+            hero.changeFiringInterveral(100);
+        }
         
     }
     // Creating the box

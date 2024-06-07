@@ -22,6 +22,10 @@ public class Hero extends Actor
     int score = 0;
     boolean playOnce = false;
     
+    private int firingInterveral = 500;
+    
+   
+    
     String facing = "right";
     
     boolean Down = false;
@@ -213,6 +217,22 @@ public class Hero extends Actor
         
         
         animateHero();
+    }
+    
+    public void changeFiringInterveral(int amount)
+    {
+        firingInterveral -= amount;
+        firingInterveral = Math.max(100, firingInterveral);
+    }
+    
+    public int getFiriningInterveral()
+    {
+        return firingInterveral;
+    }
+    
+    public void setFiringInterveral(int interveral)
+    {
+        firingInterveral = interveral;
     }
     
     public void checkCollision()
