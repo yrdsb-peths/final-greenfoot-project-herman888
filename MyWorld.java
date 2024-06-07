@@ -15,6 +15,7 @@ public class MyWorld extends World
     private int score = 0;
     public static int highestScore = 0;
     private Label scoreLabel;
+    private Label levelLabel;
     
     private Heart[] hearts;
     private int currentHeartIndex;
@@ -29,6 +30,8 @@ public class MyWorld extends World
     private Coin[] coins = new Coin[MAX_COINS];
     private int coinIndex = 0;
     
+    private int level = 1;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -39,12 +42,15 @@ public class MyWorld extends World
         super(600, 400, 1);
         
         Hero hero = new Hero();
-        addObject(hero, 300, 300);
+        addObject(hero, 300, 275);
         
         enemySpawnTimer.mark();
         
         scoreLabel = new Label(0,80);
         addObject(scoreLabel, 50, 50);
+        
+        levelLabel = new Label("Level: 1",50);
+        addObject(levelLabel, 100, 375);
         
         hearts = new Heart[3];
         currentHeartIndex = hearts.length - 1;
@@ -64,7 +70,7 @@ public class MyWorld extends World
         hearts[2] = new Heart();
         addObject(hearts[2], heart2X, heartY);
         
-        //gameOverTimer = new SimpleTimer();
+        
         
         
     }
@@ -116,8 +122,19 @@ public class MyWorld extends World
         {
             createBox();
         }
+        
+        if(score % 10 == 0)
+        {
+            levelUp();
+        }
     }
     
+    public void levelUp()
+    {
+        level++;
+        levelLabel.setValue("Level: " + level);
+        
+    }
     // Creating the box
     public void createBox()
     {
