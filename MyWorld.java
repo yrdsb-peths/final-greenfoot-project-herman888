@@ -137,6 +137,15 @@ public class MyWorld extends World
             extraEnemyCount++;
         }
         
+        if(score % 2 == 0)
+        {
+            Hero hero = getObjects(Hero.class).get(0);
+            if(hero != null)
+            {
+                hero.changeFiringInterveral(50);
+            }
+        }
+        
         spawnEnemy();
         
         for(int i = 0; i < extraEnemyCount; i++)
@@ -160,11 +169,7 @@ public class MyWorld extends World
         enemySpawnInterveral = Math.max(1000, enemySpawnInterveral - spawnDecrease);
         zombieSpawnInterveral = Math.max(1000, zombieSpawnInterveral - spawnDecrease);
         
-        Hero hero = getObjects(Hero.class).get(0);
-        if(hero != null)
-        {
-            hero.changeFiringInterveral(100);
-        }
+        
         
     }
     // Creating the box

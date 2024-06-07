@@ -147,7 +147,7 @@ public class Hero extends Actor
     public void fireBullet()
     {
 
-        if(fireTimer.millisElapsed() > 500)
+        if(fireTimer.millisElapsed() > firingInterveral)
         {
             Bullet bullet = new Bullet();
             bullet.setImage(new GreenfootImage("images/bulett2.png"));
@@ -223,6 +223,7 @@ public class Hero extends Actor
     {
         firingInterveral -= amount;
         firingInterveral = Math.max(100, firingInterveral);
+        System.out.println(firingInterveral);
     }
     
     public int getFiriningInterveral()
