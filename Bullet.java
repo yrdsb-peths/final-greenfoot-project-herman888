@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bullet extends Actor
 {
     
+    private boolean hasCollided = false;
+    
     public Bullet()
     {
         GreenfootImage image = new GreenfootImage("images/bulett2.png");
@@ -21,8 +23,9 @@ public class Bullet extends Actor
      */
     public void act()
     {
-        checkCollision();
+        //checkCollision();
         move(5);
+        //checkEdge();
        
         if(isAtEdge())
         {
@@ -31,14 +34,28 @@ public class Bullet extends Actor
         }
     }
     
+    
+    private void checkEdge()
+    {
+        if(isAtEdge())
+        {
+            getWorld().removeObject(this);
+        }
+    }
+    
     private void checkCollision()
     {
-        Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
-        if(enemy != null && enemy.getWorld() !=null && !enemy.isDying())
+        if(!hasCollided)
         {
-            enemy.die();
-            getWorld().removeObject(this);
-            //enemy.die();
+            Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
+            if(enemy != null)
+            {
+                enemy.die();
+                hasCollided = true;
+                getWorld().removeObject(this);
+            
+            }
         }
+        
     }
 }

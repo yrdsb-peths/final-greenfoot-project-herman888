@@ -57,7 +57,11 @@ public class Enemy extends Actor
         setLocation(getX()-2, getY());
         if(getX() <= 0)
         {
-            getWorld().removeObject(this);
+            if(getWorld() != null)
+            {
+                getWorld().removeObject(this);
+            }
+            
         }
         
         
@@ -98,7 +102,11 @@ public class Enemy extends Actor
         }
         else
         {
-            getWorld().removeObject(this);
+            if(getWorld() != null)
+            {
+                getWorld().removeObject(this);
+            }
+            
         }
         
         
@@ -116,6 +124,7 @@ public class Enemy extends Actor
         if(bullet != null && getWorld() != null)
         {
             getWorld().removeObject(bullet);
+            Greenfoot.delay(1);
             die();
         }
     }
@@ -123,11 +132,11 @@ public class Enemy extends Actor
     public void spawnCoin()
     {
         MyWorld world = (MyWorld) getWorld();
-        if(world.isMagnetActive())
+        if(world != null && world.isMagnetActive())
         {
             world.increaseScore();
         }
-        else
+        else if(world != null)
         {
             Coin coin = new Coin();
             getWorld().addObject(coin, getX(), getY());

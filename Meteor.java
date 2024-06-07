@@ -14,15 +14,23 @@ public class Meteor extends Actor
      */
     GreenfootImage Meteor = new GreenfootImage("meteor.png");
     
+    private int speed = 2;
+    private int finalY = 300;
+    
     
     public Meteor()
     {
+        Meteor.scale(75,75);
+        setImage(Meteor);
         
     }
     
     
     public void act()
     {
-        // Add your action code here.
+        if(getY() < finalY)
+        {
+            setLocation(getX(), getY() + speed);
+        }
     }
 }
