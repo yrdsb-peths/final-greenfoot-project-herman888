@@ -31,6 +31,9 @@ public class MyWorld extends World
     private int coinIndex = 0;
     
     private int level = 1;
+    private int enemySpawnInterveral = 5000;
+    private int zombieSpawnInterveral = 7000;
+    private int spawnDecrease = 500;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -118,12 +121,12 @@ public class MyWorld extends World
         score++;
         scoreLabel.setValue(score);
         
-        if(score % 2 == 0)
+        if(score % 5 == 0)
         {
             createBox();
         }
         
-        if(score % 10 == 0)
+        if(score % 2 == 0)
         {
             levelUp();
         }
@@ -133,6 +136,9 @@ public class MyWorld extends World
     {
         level++;
         levelLabel.setValue("Level: " + level);
+        
+        enemySpawnInterveral = Math.max(1000, enemySpawnInterveral - spawnDecrease);
+        zombieSpawnInterveral = Math.max(1000, zombieSpawnInterveral - spawnDecrease);
         
     }
     // Creating the box
@@ -202,7 +208,7 @@ public class MyWorld extends World
     
     public void spawnEnemy()
     {
-        if(enemySpawnTimer.millisElapsed() > 5000)
+        if(enemySpawnTimer.millisElapsed() > enemySpawnInterveral)
         {
             Enemy enemy = new Enemy();
             addObject(enemy, getWidth(), 300);
@@ -212,7 +218,7 @@ public class MyWorld extends World
     
     public void spawnZombie()
     {
-        if(zombieSpawnTimer.millisElapsed() > 7000)
+        if(zombieSpawnTimer.millisElapsed() > zombieSpawnInterveral)
         {
             Zombie zombie = new Zombie();
             addObject(zombie, 0, 300);
