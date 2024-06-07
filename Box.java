@@ -44,6 +44,27 @@ public class Box extends Actor
         {
             animateBox();
         }
+        
+        if(isAtBottom())
+        {
+            getWorld().removeObject(this);
+        }
+        
+        
+    }
+    
+    private boolean isAtBottom()
+    {
+        
+        World world = getWorld();
+        if(world != null)
+        {
+            int worldHeight = getWorld().getHeight();
+        
+            return getY() >= worldHeight - 1;
+        }
+        return false;
+        
     }
     
     private void checkCollision()
