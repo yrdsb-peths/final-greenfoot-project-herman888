@@ -35,27 +35,6 @@ public class Bullet extends Actor
     }
     
     
-    private void checkEdge()
-    {
-        if(isAtEdge())
-        {
-            getWorld().removeObject(this);
-        }
-    }
     
-    private void checkCollision()
-    {
-        if(!hasCollided)
-        {
-            Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
-            if(enemy != null)
-            {
-                enemy.die();
-                hasCollided = true;
-                getWorld().removeObject(this);
-            
-            }
-        }
-        
-    }
+    
 }

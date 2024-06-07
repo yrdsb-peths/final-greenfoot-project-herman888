@@ -44,7 +44,7 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(650, 400, 1);
+        super(600, 400, 1);
         
         Hero hero = new Hero();
         addObject(hero, 300, 275);
@@ -246,7 +246,7 @@ public class MyWorld extends World
         if(enemySpawnTimer.millisElapsed() > enemySpawnInterveral)
         {
             Enemy enemy = new Enemy();
-            addObject(enemy, 600, 300);
+            addObject(enemy, getWidth(), 300);
             enemySpawnTimer.mark();
         }
     }

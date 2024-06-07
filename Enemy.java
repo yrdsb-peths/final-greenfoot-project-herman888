@@ -44,6 +44,7 @@ public class Enemy extends Actor
             moveLeft();
             animateEnemy();
             bulletDetection();// Add your action code here.
+            checkCollisionWithMeteor();
         }
         else
         {
@@ -126,6 +127,15 @@ public class Enemy extends Actor
             getWorld().removeObject(bullet);
             Greenfoot.delay(1);
             die();
+        }
+    }
+    
+    private void checkCollisionWithMeteor()
+    {
+        Meteor meteor = (Meteor) getOneIntersectingObject(Meteor.class);
+        if(meteor != null && meteor.getWorld() != null)
+        {
+            setLocation(getX() + 5, getY());
         }
     }
     

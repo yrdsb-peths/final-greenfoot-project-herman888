@@ -20,7 +20,7 @@ public class Meteor extends Actor
     
     public Meteor()
     {
-        Meteor.scale(75,75);
+        Meteor.scale(100,100);
         setImage(Meteor);
         
     }
