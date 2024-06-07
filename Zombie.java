@@ -33,6 +33,7 @@ public class Zombie extends Actor
         }
     }
     
+   
     public void moveRight()
     {
         setLocation(getX()+2, getY());
@@ -127,12 +128,13 @@ public class Zombie extends Actor
         }
         else
         {
-            Coin coin = new Coin();
-            getWorld().addObject(coin, getX(), getY());
-            getWorld().addObject(coin, getX() + 2, getY());
-            getWorld().addObject(coin, getX() - 2, getY());
+            Coin coin1 = new Coin();
+            getWorld().addObject(coin1, getX(), getY());
+            world.addCoin(coin1);
             
-            world.addCoin(coin);
+            Coin coin2 = new Coin();
+            getWorld().addObject(coin2, getX() + 20, getY());
+            world.addCoin(coin2);
         }
         
     }

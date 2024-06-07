@@ -198,7 +198,7 @@ public class MyWorld extends World
         if(zombieSpawnTimer.millisElapsed() > 7000)
         {
             Zombie zombie = new Zombie();
-            addObject(zombie, getWidth(), 100);
+            addObject(zombie, 0, 300);
             zombieSpawnTimer.mark();
         }
     }
