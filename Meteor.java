@@ -13,15 +13,17 @@ public class Meteor extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootImage Meteor = new GreenfootImage("meteor.png");
+    SimpleTimer lifeTimer = new SimpleTimer();
     
-    private int speed = 2;
-    private int finalY = 300;
+    int speed = 2;
+    int finalY = 300;
     
     
     public Meteor()
     {
         Meteor.scale(100,100);
         setImage(Meteor);
+        lifeTimer.mark();
         
     }
     
@@ -30,7 +32,14 @@ public class Meteor extends Actor
     {
         if(getY() < finalY)
         {
-            setLocation(getX(), getY() + speed);
+            setLocation(getX(), getY() + 1);
         }
+       
+        
+        if(lifeTimer.millisElapsed() > 12000)
+        {
+            getWorld().removeObject(this);
+        }
+        
     }
 }

@@ -12,6 +12,7 @@ public class MyWorld extends World
     SimpleTimer enemySpawnTimer = new SimpleTimer();
     SimpleTimer zombieSpawnTimer = new SimpleTimer();
     SimpleTimer magnetTimer = new SimpleTimer();
+    SimpleTimer meteorSpawnTimer = new SimpleTimer();
     private int score = 0;
     public static int highestScore = 0;
     private Label scoreLabel;
@@ -19,6 +20,8 @@ public class MyWorld extends World
     
     private Heart[] hearts;
     private int currentHeartIndex;
+    
+    Meteor meteor = null;
     
     private boolean isGameOver = false;
     private int gameOverDelay = 300;
@@ -35,6 +38,9 @@ public class MyWorld extends World
     private int zombieSpawnInterveral = 7000;
     private int spawnDecrease = 500;
     
+    int speed = 2;
+    int finalY = 300;
+
     private int extraEnemyCount = 0;
     
     /**
@@ -50,6 +56,8 @@ public class MyWorld extends World
         addObject(hero, 300, 275);
         
         enemySpawnTimer.mark();
+        zombieSpawnTimer.mark();
+        meteorSpawnTimer.mark();
         
         scoreLabel = new Label(0,80);
         addObject(scoreLabel, 50, 50);
@@ -76,7 +84,7 @@ public class MyWorld extends World
         addObject(hearts[2], heart2X, heartY);
         
         
-        spawnMeteor();
+        
         
     }
     
@@ -137,7 +145,10 @@ public class MyWorld extends World
             extraEnemyCount++;
         }
         
-        
+        if(score % 20 == 0)
+        {
+            createMeteor();
+        }
         
         spawnEnemy();
         
@@ -180,6 +191,17 @@ public class MyWorld extends World
         addObject(box, x, y);
     }
     
+    
+    
+    
+    public void createMeteor()
+    {
+        Meteor meteor = new Meteor();
+        int x = 550;
+        int y = 0;
+        addObject(meteor, x, y);
+    }
+    
     // spawns enemy and checks if magnet on
     public void act()
     {
@@ -188,6 +210,8 @@ public class MyWorld extends World
            spawnEnemy(); 
            spawnZombie();
            checkMagnetEffect();
+           
+         
            
            
         }
@@ -207,14 +231,15 @@ public class MyWorld extends World
             
             
         }
+        
+        
+        
+        
     }
     
-    public void spawnMeteor()
-    {
-        int x = getWidth() - 50;
-        int y = 10;
-        addObject(new Meteor(), x, y);
-    }
+    
+    
+    
     public void activateMagnet()
     {
         magnetActive = true;
@@ -222,6 +247,8 @@ public class MyWorld extends World
         Clock clock = new Clock();
         addObject(clock, 550, 30);
     }
+    
+    
     
     // This is to make sure magnet only last 5000 millis
     public void checkMagnetEffect()

@@ -99,7 +99,7 @@ public class Hero extends Actor
             }
             if(imageIndex >= idleSpace.length) 
             {
-            System.out.println("imageIndex out of bounds, resetting to 0");
+            
             imageIndex = 0;
             }
         
@@ -223,7 +223,7 @@ public class Hero extends Actor
     {
         firingInterveral -= amount;
         firingInterveral = Math.max(100, firingInterveral);
-        System.out.println(firingInterveral);
+        
     }
     
     public int getFiriningInterveral()

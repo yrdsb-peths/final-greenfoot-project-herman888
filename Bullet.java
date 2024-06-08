@@ -23,9 +23,9 @@ public class Bullet extends Actor
      */
     public void act()
     {
-        //checkCollision();
+        
         move(5);
-        //checkEdge();
+        
        
         if(isAtEdge())
         {
