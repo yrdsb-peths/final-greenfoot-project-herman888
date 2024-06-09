@@ -38,8 +38,8 @@ public class Hero extends Actor
         for(int i = 0; i < idleRight.length; i++)
         {
             idleRight[i] = new GreenfootImage("images/hero_walk/idle" + i + ".png");
-            int newWidth = 150;  
-            int newHeight = 150;
+            int newWidth = 75;  
+            int newHeight = 75;
             idleRight[i].scale(newWidth, newHeight);
         }
         
@@ -50,7 +50,7 @@ public class Hero extends Actor
         {
             idleLeft[i] = new GreenfootImage("images/hero_walk/idle" + i +".png");
             idleLeft[i].mirrorHorizontally();
-            idleLeft[i].scale(150,150);
+            idleLeft[i].scale(75,75);
         }
         
         for(int i = 0; i < idleSpace.length; i++)
@@ -208,6 +208,7 @@ public class Hero extends Actor
             fireBullet();
         }
         checkCollision();
+        checkZombieCollision();
         checkForCoin();
         
        
@@ -246,6 +247,18 @@ public class Hero extends Actor
             deathSound.play();
             world.removeHeart();
             
+        }
+    }
+    
+    public void checkZombieCollision()
+    {
+        Actor zombie = getOneIntersectingObject(Zombie.class);
+        if(zombie != null)
+        {
+            getWorld().removeObject(zombie);
+            MyWorld world = (MyWorld)getWorld();
+            deathSound.play();
+            world.removeHeart();
         }
     }
     

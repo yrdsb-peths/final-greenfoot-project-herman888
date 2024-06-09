@@ -50,13 +50,13 @@ public class Zombie extends Actor
         for(int i = 0; i < idleZombie.length; i++)
         {
             idleZombie[i] = new GreenfootImage("images/zombie_idle/zombie" + i + ".png");
-            idleZombie[i].scale(75,75);
+            idleZombie[i].scale(50,75);
         }
         
         for(int i = 0; i < deadIdle.length; i++)
         {
             deadIdle[i] = new GreenfootImage("images/zombiedead_idle/zombiedead" + i +".png");
-            deadIdle[i].scale(75,75);
+            deadIdle[i].scale(50,75);
         }
         setImage(idleZombie[0]);
         animationTimer.mark();
