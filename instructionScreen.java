@@ -30,5 +30,10 @@ public class instructionScreen extends World
         Label label3 = new Label("Use <space> to Shoot Up",40);
         addObject(label3, 300, 300);
         
+        World objectiveWorld = new objectiveWorld();
+        
+        Button3 button2 = new Button3("objective.png", objectiveWorld);
+        addObject(button2, 300,150);
+        
     }
 }
