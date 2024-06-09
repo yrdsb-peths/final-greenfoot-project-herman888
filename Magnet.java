@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Magnet here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (herman Isayenka) 
+ * @version (June 2024)
  */
 public class Magnet extends Actor
 {

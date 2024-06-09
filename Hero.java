@@ -3,37 +3,32 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Hero here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Herman Isayenka ) 
+ * @version (June 2024)
  */
 public class Hero extends Actor
 {
+    
+    // VARIABLES
     
     GreenfootImage[] idleRight = new GreenfootImage[6];
     GreenfootImage[] idleLeft = new GreenfootImage[6];
     GreenfootImage[] idleSpace = new GreenfootImage[4];
     GreenfootSound coinSound = new GreenfootSound("coinsound.mp3");
     GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
-    
     SimpleTimer animationTimer = new SimpleTimer();
     SimpleTimer transitionTimer = new SimpleTimer();
     SimpleTimer fireTimer = new SimpleTimer();
-    
     int score = 0;
     boolean playOnce = false;
-    
     private int firingInterveral = 500;
-    
-   
-    
     String facing = "right";
-    
     boolean Down = false;
-    
     boolean transitioning = false;
     
     public Hero()
     {
+        // My Idles
         setImage(idleRight[0]);
         for(int i = 0; i < idleRight.length; i++)
         {
@@ -42,9 +37,6 @@ public class Hero extends Actor
             int newHeight = 90;
             idleRight[i].scale(newWidth, newHeight);
         }
-        
-        
-        
         
         for(int i = 0; i < idleLeft.length; i++)
         {
@@ -65,8 +57,7 @@ public class Hero extends Actor
     }
 
 
-   // GreenfootSound elephantSound = new GreenfootSound("elephantcub.mp3");
-    //GreenfootImage idle = new GreenfootImage("images/hero_walk/idle0.png");
+   
     int imageIndex = 0;
     public void animateHero()
     {
@@ -94,8 +85,6 @@ public class Hero extends Actor
                     
                 }
                 
-                
-                
             }
             if(imageIndex >= idleSpace.length) 
             {
@@ -104,8 +93,6 @@ public class Hero extends Actor
             }
         
             return;
-            
-           
         }
         
         if(transitioning)
@@ -119,10 +106,7 @@ public class Hero extends Actor
                 return;
             }
         }
-        
-        
-        
-        
+    
         if(facing.equals("right"))
         {
             setImage(idleRight[imageIndex]);
@@ -136,14 +120,9 @@ public class Hero extends Actor
             imageIndex = (imageIndex + 1) % idleLeft.length;
         }
         
-        
-        
-        
-        
-        
-        
     }
     
+    // This is to fire the bullet when space key is pressed and when down key
     public void fireBullet()
     {
 
@@ -175,7 +154,7 @@ public class Hero extends Actor
         }
     }
     
-    //GreenfootImage idle = new GreenfootImage("images/hero_idle/idle0.png");
+    
     
     public void act()
     {
@@ -220,6 +199,7 @@ public class Hero extends Actor
         animateHero();
     }
     
+    // I want to decrease firing interveral 
     public void changeFiringInterveral(int amount)
     {
         firingInterveral -= amount;
@@ -227,16 +207,7 @@ public class Hero extends Actor
         
     }
     
-    public int getFiriningInterveral()
-    {
-        return firingInterveral;
-    }
-    
-    public void setFiringInterveral(int interveral)
-    {
-        firingInterveral = interveral;
-    }
-    
+    // Checks if Enemy touched hero
     public void checkCollision()
     {
         Actor enemy = getOneIntersectingObject(Enemy.class);
@@ -253,6 +224,7 @@ public class Hero extends Actor
         }
     }
     
+    // Checks if Zombie touched hero
     public void checkZombieCollision()
     {
         Actor zombie = (Zombie) getOneIntersectingObject(Zombie.class);
@@ -265,6 +237,7 @@ public class Hero extends Actor
         }
     }
     
+    // This is to "eat" the coin
     public void eat()
     {
         if(isTouching(Coin.class))
@@ -276,6 +249,7 @@ public class Hero extends Actor
         }
     }
     
+    // This is so that after i touch the magnet it dissapears and puts it in an on state
     public void collectMagnet()
     {
         Actor magnet = getOneIntersectingObject(Magnet.class);
@@ -288,6 +262,8 @@ public class Hero extends Actor
         }
     }
     
+    
+    // Checks for coin
     public void checkForCoin()
     {
         Coin coin = (Coin) getOneIntersectingObject(Coin.class);

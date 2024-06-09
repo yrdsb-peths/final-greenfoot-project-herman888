@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class MyWorld here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Herman Isayenka ) 
+ * @version (June 2024)
  */
 public class MyWorld extends World
 {
@@ -125,6 +125,15 @@ public class MyWorld extends World
         
     }
     
+    public void gameComplete()
+    {
+        Label gameCompleteLabel = new Label("Game Complete", 70);
+        addObject(gameCompleteLabel, 300, 200);
+        
+        isGameOver = true;
+        gameOverDelay = 300;
+    }
+    
     
     // This is what happens in my code when coins are being tooken by 
     // the hero, every 5 points a box spawns, at a random x value
@@ -143,6 +152,12 @@ public class MyWorld extends World
         {
             spawnExtraEnemy();
             
+        }
+        
+        
+        if(score % 50 == 0)
+        {
+            gameComplete();
         }
         
         if(score % 11 == 0)

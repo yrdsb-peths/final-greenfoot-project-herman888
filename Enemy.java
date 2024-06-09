@@ -3,11 +3,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Enemy here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Herman Isayenka) 
+ * @version (June 2024)
  */
 public class Enemy extends Actor
 {
+    // VARIABLES
     
     GreenfootImage[] idleLeft = new GreenfootImage[4];
     GreenfootImage[] deadIdle = new GreenfootImage[8];
@@ -17,6 +18,7 @@ public class Enemy extends Actor
     
     public Enemy()
     {
+        //Idles
         for(int i = 0; i < idleLeft.length; i++)
         {
             idleLeft[i] = new GreenfootImage("images/enemy_idle/idle" + i + ".png");
@@ -55,6 +57,7 @@ public class Enemy extends Actor
         
     }
     
+    // Movement
     public void moveLeft()
     {
         setLocation(getX()-2, getY());
@@ -70,6 +73,7 @@ public class Enemy extends Actor
         
     }
     
+    // Animation when walking
     public void animateEnemy()
     {
         if(animationTimer.millisElapsed() < 300)
@@ -90,6 +94,7 @@ public class Enemy extends Actor
         
     }
     
+    // Animate when die
     public void animateDeath()
     {
         if(animationTimer.millisElapsed()<45)
@@ -120,6 +125,7 @@ public class Enemy extends Actor
         return dying;
     }
     
+    // Checks if its been hit by a bullet
     public void bulletDetection()
     {
         Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
@@ -132,6 +138,7 @@ public class Enemy extends Actor
         }
     }
     
+    // The meteor is able to block them moves them away 
     private void checkCollisionWithMeteor()
     {
         Meteor meteor = (Meteor) getOneIntersectingObject(Meteor.class);
@@ -142,7 +149,7 @@ public class Enemy extends Actor
     }
     
    
-    
+    // Spawns a coin when dead
     public void spawnCoin()
     {
         MyWorld world = (MyWorld) getWorld();

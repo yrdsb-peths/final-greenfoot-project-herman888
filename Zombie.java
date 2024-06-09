@@ -3,12 +3,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Zombie here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Herman isayenka) 
+ * @version {June 2024)
  */
 public class Zombie extends Actor
 {
     
+    // VARIABLES
     GreenfootImage[] idleZombie = new GreenfootImage[6];
     GreenfootImage[] deadIdle = new GreenfootImage[8];
     SimpleTimer animationTimer = new SimpleTimer();
@@ -52,6 +53,8 @@ public class Zombie extends Actor
     
     public Zombie()
     {
+        
+        //Idles
         for(int i = 0; i < idleZombie.length; i++)
         {
             idleZombie[i] = new GreenfootImage("images/zombie_idle/zombie" + i + ".png");
@@ -78,6 +81,7 @@ public class Zombie extends Actor
         imageIndex = (imageIndex + 1) % idleZombie.length;
     }
     
+    // Detetects if zombie got shot by bullet
     public void bulletDetection()
     {
         Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
@@ -94,6 +98,7 @@ public class Zombie extends Actor
         return dying;
     }
     
+    //Loop through idle when dead
     public void animateDeath()
     {
         if(animationTimer.millisElapsed()<100)
@@ -124,6 +129,8 @@ public class Zombie extends Actor
         
     }
     
+    
+    //Drop a coin when dead
     public void spawnCoin()
     {
         MyWorld world = (MyWorld) getWorld();
