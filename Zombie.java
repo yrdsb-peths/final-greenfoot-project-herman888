@@ -15,6 +15,7 @@ public class Zombie extends Actor
     int imageIndex = 0;
     boolean dying = false;
     
+    
     /**
      * Act - do whatever the Zombie wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -32,6 +33,10 @@ public class Zombie extends Actor
             animateDeath();
         }
     }
+    
+    
+    
+    
     
    
     public void moveRight()

@@ -44,7 +44,9 @@ public class Enemy extends Actor
             moveLeft();
             animateEnemy();
             bulletDetection();// Add your action code here.
+            
             checkCollisionWithMeteor();
+            
         }
         else
         {
@@ -138,6 +140,8 @@ public class Enemy extends Actor
             setLocation(getX() + 5, getY());
         }
     }
+    
+   
     
     public void spawnCoin()
     {

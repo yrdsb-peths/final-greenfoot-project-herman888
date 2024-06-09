@@ -131,31 +131,38 @@ public class MyWorld extends World
         score++;
         scoreLabel.setValue(score);
         
-        if(score % 5 == 0)
-        {
-            createBox();
-        }
-        
-        if(score % 3== 0)
-        {
-            levelUp();
-        }
         if(score % 10 == 0)
         {
-            extraEnemyCount++;
+            createBox();
+            
+            
         }
+        if(score % 2 == 0)
+        {
+            spawnExtraEnemy();
+            
+        }
+        
+        if(score % 11 == 0)
+        {
+            levelUp();
+            
+        }
+        
+        spawnEnemy();
+        
+    
+    
+        
         
         if(score % 20 == 0)
         {
             createMeteor();
         }
         
-        spawnEnemy();
         
-        for(int i = 0; i < extraEnemyCount; i++)
-        {
-            spawnExtraEnemy();
-        }
+        
+        
     }
     
     private void spawnExtraEnemy()
@@ -179,6 +186,7 @@ public class MyWorld extends World
             
             hero.changeFiringInterveral(50);
         }
+        
         
         
     }
@@ -210,6 +218,8 @@ public class MyWorld extends World
            spawnEnemy(); 
            spawnZombie();
            checkMagnetEffect();
+           
+          
            
          
            
@@ -270,12 +280,19 @@ public class MyWorld extends World
     
     public void spawnEnemy()
     {
+        int enemiesToSpawn = level;
         if(enemySpawnTimer.millisElapsed() > enemySpawnInterveral)
+        
+    
         {
-            Enemy enemy = new Enemy();
-            addObject(enemy, getWidth(), 300);
-            enemySpawnTimer.mark();
+            for(int i = 0; i < enemiesToSpawn; i++)
+            {   
+                Enemy enemy = new Enemy();
+                addObject(enemy, getWidth(), 300);
+                enemySpawnTimer.mark();
+            }
         }
+        
     }
     
     public void spawnZombie()
@@ -304,9 +321,10 @@ public class MyWorld extends World
     {
         for (int i = 0; i < coinIndex; i++)
         {
-            increaseScore();
+           
             removeObject(coins[i]);
             coins[i] = null; 
+            increaseScore();
         }
         coinIndex = 0;  
     }
