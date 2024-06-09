@@ -35,6 +35,8 @@ public class titleScreen extends World
         Label titleLabel = new Label("Space Invaders",70);
         addObject(titleLabel,320,50);
         
+        
+        
 
         
         MyWorld world = new MyWorld();

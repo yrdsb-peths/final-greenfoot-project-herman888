@@ -41,6 +41,8 @@ public class MyWorld extends World
     int speed = 2;
     int finalY = 300;
 
+    int spacing = 100;
+    
     private int extraEnemyCount = 0;
     
     /**
@@ -137,7 +139,7 @@ public class MyWorld extends World
             
             
         }
-        if(score % 2 == 0)
+        if(score % 11 == 0)
         {
             spawnExtraEnemy();
             
@@ -281,14 +283,14 @@ public class MyWorld extends World
     public void spawnEnemy()
     {
         int enemiesToSpawn = level;
-        if(enemySpawnTimer.millisElapsed() > enemySpawnInterveral)
+        if(enemySpawnTimer.millisElapsed() > enemySpawnInterveral && enemiesToSpawn > 0)
         
     
         {
             for(int i = 0; i < enemiesToSpawn; i++)
             {   
                 Enemy enemy = new Enemy();
-                addObject(enemy, getWidth(), 300);
+                addObject(enemy, getWidth() + (spacing * i), 300);
                 enemySpawnTimer.mark();
             }
         }
