@@ -59,6 +59,7 @@ public class Hero extends Actor
 
    
     int imageIndex = 0;
+    // animation for the hero
     public void animateHero()
     {
         if(animationTimer.millisElapsed() < 300)

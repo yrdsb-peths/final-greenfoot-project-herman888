@@ -70,6 +70,8 @@ public class Zombie extends Actor
         animationTimer.mark();
     }
     
+    
+    // animate the zombie
     public void animateZombie()
     {
         if(animationTimer.millisElapsed() < 300)
@@ -120,6 +122,7 @@ public class Zombie extends Actor
         
     }
     
+    // die
     public void die()
     {
         dying = true;

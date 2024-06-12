@@ -31,6 +31,7 @@ Consider using **Markdown** syntax to format the text in this file. [Markdown ba
 ### 6. Magnet Power-Up
 - When activated, the magnet attracts all coins to the hero for a limited time.
 - The magnet duration is 6000 milliseconds (6 seconds).
+- Which is displayed by a timer
 
 ### 7. Score and Levels
 - The player's score increases with each collected coin.

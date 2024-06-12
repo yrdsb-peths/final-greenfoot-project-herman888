@@ -189,13 +189,16 @@ public class MyWorld extends World
     
     }
     
+    
+    // This is my method to level up:
+    
+    //In this i make the label update as well as the shooters bullett faster
     public void levelUp()
     {
         level++;
         levelLabel.setValue("Level: " + level);
         
-        enemySpawnInterveral = Math.max(1000, enemySpawnInterveral - spawnDecrease);
-        zombieSpawnInterveral = Math.max(1000, zombieSpawnInterveral - spawnDecrease);
+       
         
         Hero hero = getObjects(Hero.class).get(0);
         if(hero != null)
@@ -218,7 +221,7 @@ public class MyWorld extends World
     
     
     
-    
+    // This is to create a meteor
     public void createMeteor()
     {
         Meteor meteor = new Meteor();
@@ -266,7 +269,7 @@ public class MyWorld extends World
     
     
     
-    
+    // Magnet is om
     public void activateMagnet()
     {
         magnetActive = true;
@@ -312,6 +315,7 @@ public class MyWorld extends World
         
     }
     
+    // Spawn the zombie
     public void spawnZombie()
     {
         if(zombieSpawnTimer.millisElapsed() > zombieSpawnInterveral)
