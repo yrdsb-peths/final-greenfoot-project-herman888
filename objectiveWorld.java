@@ -48,6 +48,9 @@ public class objectiveWorld extends World
         Label label10 = new Label("You have 3 hearts once you run out the game is over", 25);
         addObject(label10,290,365);
         
+        Label label11 = new Label("Click Enter To Go Back", 25);
+        addObject(label11,310,415);
+        
         
         
     }
@@ -56,7 +59,7 @@ public class objectiveWorld extends World
     {
         if (Greenfoot.isKeyDown("enter")) {
            
-            Greenfoot.setWorld(new MyWorld());
+            Greenfoot.setWorld(new titleScreen());
         }
     }
 }
