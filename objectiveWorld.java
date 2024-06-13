@@ -51,4 +51,12 @@ public class objectiveWorld extends World
         
         
     }
+    
+    public void act()
+    {
+        if (Greenfoot.isKeyDown("enter")) {
+           
+            Greenfoot.setWorld(new MyWorld());
+        }
+    }
 }
