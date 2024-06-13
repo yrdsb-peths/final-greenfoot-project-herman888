@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Box here.
+ * This is my box class that falls down at a specific score interveral and if its shot at its explodes and creates the effect of dropping a magnet from that box
  * 
  * @author (Herman Isayenka) 
  * @version (June 2024)

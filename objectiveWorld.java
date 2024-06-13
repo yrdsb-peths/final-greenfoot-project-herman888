@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class objectiveWorld here.
+ * This class allows me to spread the idea of what the game has its features and things they should look out for in my game
  * 
  * @author (Herman Isayenka ) 
  * @version (June 2024)

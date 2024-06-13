@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Magnet here.
+ * This is the item when its picked up it will collect all the coins on the screen
  * 
  * @author (herman Isayenka) 
  * @version (June 2024)

@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Heart here.
+ * This is the image that is displayed to represnt how many more lives the hero has
  * 
  * @author (Herman Isayenka) 
  * @version (June 2024)

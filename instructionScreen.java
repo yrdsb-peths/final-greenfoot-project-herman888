@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class instructionScreen here.
+ * This is a screen that allows the reader to understand key movements so i am able to interface with the user.
  * 
  * @author (Herman Isayenka) 
  * @version (June 2024)

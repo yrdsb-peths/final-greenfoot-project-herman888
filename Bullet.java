@@ -1,8 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bullet here.
- * 
+ * This is the bullet class and it is responsible for killing the skeletons and zombies in the game.
  * @author (herman Isayenka) 
  * @version (June 2024)
  */

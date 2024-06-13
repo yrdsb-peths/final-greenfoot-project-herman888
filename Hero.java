@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Hero here.
+ * This is the main character is, its the one that is controlled by the users key presses.
  * 
  * @author (Herman Isayenka ) 
  * @version (June 2024)

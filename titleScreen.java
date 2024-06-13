@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class titleScreen here.
+ * The title screen is the main display when the user opens up the game
  * 
  * @author (Herman Isayenka) 
  * @version (June 2024)

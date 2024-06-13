@@ -1,7 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld here.
+ * 
+ * 
+ * This is the main world class it is where most of the game activity occurs and is where the user will spend the most time.
  * 
  * @author (Herman Isayenka ) 
  * @version (June 2024)

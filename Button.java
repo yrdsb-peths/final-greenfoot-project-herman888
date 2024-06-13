@@ -1,7 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Button here.
+ * This is a button that helps me navigate through diffirent worlds based on a mouse click
+ * 
+ * 
  * 
  * @author (Herman Isayenka) 
  * @version (June 2024)

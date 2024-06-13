@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Clock here.
+ * This is a series of idle images that acts like a clock
  * 
  * @author (Herman Isayenka) 
  * @version (June 2024)

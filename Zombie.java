@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Zombie here.
+ * This is the second enemy
  * 
  * @author (Herman isayenka) 
  * @version {June 2024)

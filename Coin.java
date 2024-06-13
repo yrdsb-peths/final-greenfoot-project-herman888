@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Coin here.
+ * This is the reward in the game when the hero kills a mob
  * 
  * @author (Herman Isayenka) 
  * @version (June 2024)

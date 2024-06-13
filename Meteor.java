@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Meteor here.
+ * This acts as a shield for the hero because the enemys cant come into the game when this is activated
  * 
  * @author (Herman Isayenka) 
  * @version (June 2024)
